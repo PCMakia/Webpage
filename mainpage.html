@@ -1,0 +1,235 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>PCMakia — Projects & Portfolio</title>
+  <meta name="description" content="Portfolio — Projects by PCMakia." />
+  
+  <!-- FONTS -->
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --bg: #0b0b0b;        
+      --panel: #0f0f0f;     
+      --fg: #ffffff;        
+      --muted: #d0d0d0;   
+      --gold: #d6af3b;      
+      --mag: #6a0748;      
+      --glass: rgba(255,255,255,0.03);
+      --radius: 12px;
+      --max-width: 1100px;
+    }
+
+    /* Reset & basics */
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+      background: linear-gradient(180deg,var(--bg) 0%, #070707 100%);
+      color:var(--fg);
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      line-height:1.45;
+      padding:36px 20px;
+      display:flex;
+      justify-content:center;
+    }
+
+    /* Container */
+    .wrap{
+      width:100%;
+      max-width:var(--max-width);
+      margin:0 auto;
+    }
+
+    header{
+      display:flex;
+      gap:16px;
+      align-items:center;
+      justify-content:space-between;
+      margin-bottom:28px;\    }
+
+    .brand{
+      display:flex;gap:14px;align-items:center
+    }
+
+    .logo{
+      width:56px;height:56px;border-radius:12px;background:linear-gradient(135deg,var(--gold),var(--mag));
+      display:flex;align-items:center;justify-content:center;font-weight:700;color:var(--bg);font-size:18px;
+      box-shadow:0 6px 20px rgba(0,0,0,0.6);
+    }
+
+    .name{font-size:18px;font-weight:700;letter-spacing:0.2px}
+    .subtitle{font-size:13px;color:var(--muted);margin-top:2px}
+
+    nav a{color:var(--muted);text-decoration:none;margin-left:18px;font-weight:600}
+    nav a.cta{background:linear-gradient(90deg,var(--gold),var(--mag));padding:8px 12px;border-radius:8px;color:var(--bg);}
+
+    main{
+      display:grid;grid-template-columns: 1fr 380px;gap:28px;align-items:start;
+    }
+
+    
+    .panel{background:linear-gradient(180deg,var(--panel), rgba(255,255,255,0.01));padding:20px;border-radius:var(--radius);box-shadow:0 10px 30px rgba(0,0,0,0.6)}
+
+    .hero{
+      padding:24px;border-radius:10px;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));margin-bottom:18px;
+      display:flex;flex-direction:column;gap:6px
+    }
+
+    .hero h1{margin:0;font-size:28px}
+    .hero p{margin:0;color:var(--muted)}
+
+    .project-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+
+    .card{
+      background:linear-gradient(180deg,var(--glass), rgba(255,255,255,0.02));padding:12px;border-radius:12px;border:1px solid rgba(255,255,255,0.03);
+      min-height:120px;display:flex;flex-direction:column;justify-content:space-between
+    }
+
+    .card h3{margin:0;font-size:15px}
+    .card p{margin:6px 0 0 0;color:var(--muted);font-size:13px}
+    .tags{margin-top:8px;display:flex;gap:8px;flex-wrap:wrap}
+    .tag{font-size:12px;padding:6px 8px;border-radius:999px;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.02);color:var(--muted)}
+
+    .card .links{display:flex;gap:8px;align-items:center;margin-top:10px}
+    .link-btn{font-size:13px;padding:6px 9px;border-radius:8px;background:transparent;border:1px solid rgba(255,255,255,0.04);color:var(--fg);text-decoration:none}
+
+    /* Right column: about / contact */
+    .aside{position:relative}
+    .about{padding:18px;border-radius:12px;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));}
+    .about h4{margin:0 0 6px 0}
+    .about p{margin:0;color:var(--muted);font-size:14px}
+
+    .cv{display:flex;gap:10px;margin-top:12px}
+    .btn{display:inline-block;padding:10px 14px;border-radius:10px;text-decoration:none;font-weight:700}
+    .btn-outline{border:1px solid rgba(255,255,255,0.06);background:transparent;color:var(--fg)}
+    .btn-primary{background:linear-gradient(90deg,var(--gold),var(--mag));color:var(--bg)}
+
+    /* Footer */
+    footer{margin-top:22px;color:var(--muted);text-align:center;font-size:13px}
+
+    /* Responsive */
+    @media (max-width:980px){
+      main{grid-template-columns:1fr;}
+      .project-grid{grid-template-columns:1fr}
+      .logo{width:48px;height:48px}
+    }
+
+    /* Accessibility focus */
+    a:focus, button:focus{outline:3px solid rgba(214,175,59,0.18);outline-offset:2px}
+
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div class="brand">
+        <div class="logo" aria-hidden>CL</div>
+        <div>
+          <div class="name">Claude Le (PC Makia)</div>
+          <div class="subtitle">Bachelor's student • AI researcher • Software & Game dev</div>
+        </div>
+      </div>
+
+      <nav aria-label="Main navigation">
+        <a href="#projects">Projects</a>
+        <a href="#about">About</a>
+        <a href="#contact" class="cta">Contact / CV</a>
+      </nav>
+    </header>
+
+    <main>
+      <section>
+        <div class="panel">
+          <div class="hero">
+            <h1>Hi — I'm Claude. I build ML systems, tools in Python & C++.</h1>
+            <p>I focus on readable code, ultilities projects and Machine Learning technique. Currently, exploring game development tool (Unity) and novel ML training technique. Below are select projects from my GitHub.</p>
+          </div>
+
+          <h2 id="projects" style="margin:0 0 12px 6px;font-size:14px;color:var(--muted)">Selected projects</h2>
+
+          <div class="project-grid">
+            <!-- PROJECT CARD -->
+            <article class="card">
+              <div>
+                <h3>Project Title — AI agent Experiment</h3>
+                <p>A coder agent based by Gemini model. Helps with code reading, editing, and suggestion with debugging</p>
+                <div class="tags"><span class="tag">Python</span><span class="tag">PyTorch</span><span class="tag">AI</span></div>
+              </div>
+              <div class="links">
+                <a class="link-btn" href="https://github.com/PCMakia/agenta">View repo</a>
+              </div>
+            </article>
+
+            <article class="card">
+              <div>
+                <h3>Steam reviews analyzer</h3>
+                <p>A code based tool that helps with analysing the sentiment and output list of words that represent the majority reviews of a game</p>
+                <div class="tags"><span class="tag">Python</span><span class="tag">NLTK</span></div>
+              </div>
+              <div class="links"><a class="link-btn" href="https://github.com/PCMakia/STEAM-Review-Analyzer">View repo</a></div>
+            </article>
+
+            <article class="card">
+              <div>
+                <h3>Lazer Balls - asteroid shooter</h3>
+                <p>A simple shooter game by Pygame. Dodge the incoming balls or shoot them down.</p>
+                <div class="tags"><span class="tag">Pygame</span><span class="tag">Python</span><span class="tag">Demo</span></div>
+              </div>
+              <div class="links"><a class="link-btn" href="#">Play (under construction)</a><a class="link-btn" href="https://github.com/PCMakia/Lazer_Balls">Source</a></div>
+            </article>
+
+            <article class="card">
+              <div>
+                <h3>Other / Coursework</h3>
+                <p>A simple Shell for Operating System CSC 428</p>
+                <div class="tags"><span class="tag">C</span><span class="tag">Unix_Shell</span></div>
+              </div>
+              <div class="links"><a class="link-btn" href="https://github.com/PCMakia/Simple-Shell-C">View repo</a></div>
+            </article>
+
+          </div>
+
+        </div>
+
+        <footer>
+          <p></p>
+        </footer>
+      </section>
+
+      <aside class="aside">
+        <div class="about panel">
+          <div class="about">
+            <h4 id="about">About me</h4>
+            <p>I am a bachelor's student and self-funded researcher focusing on machine learning, systems programming, and interactive simulations. I care about reproducible results and user centered in my games.</p>
+            <div class="cv">
+              <a class="btn btn-outline" href="assets/PC_Makia_Resume.pdf" download>Download CV</a>
+              <a class="btn btn-primary" href="#contact">Contact</a>
+            </div>
+          </div>
+        </div>
+
+        <div style="height:18px"></div>
+
+        <div class="panel" style="padding:14px">
+          <h4 style="margin:0 0 10px 0">Contact</h4>
+          <p style="margin:0 0 12px 0;color:var(--muted)">Email: <strong>baole24865@gmail.com</strong></p>
+          <p style="margin:0 0 12px 0;color:var(--muted)">GitHub: <a href="https://github.com/PCMakia" style="color:var(--gold);text-decoration:none">github.com/PCMakia</a></p>
+
+          <div style="display:flex;gap:8px;margin-top:8px">
+            <a class="btn btn-outline" href="https://www.linkedin.com/in/bảo-lê-43872b26a">LinkedIn</a>
+            <a class="btn btn-outline" href="https://x.com/home">X</a>
+          </div>
+        </div>
+
+      </aside>
+    </main>
+  </div>
+
+</body>
+</html>
