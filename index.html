@@ -3,233 +3,734 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>PCMakia — Projects & Portfolio</title>
-  <meta name="description" content="Portfolio — Projects by PCMakia." />
+  <title>Claude Le (PC Makia) — Portfolio</title>
+  <meta name="description" content="Portfolio — AI Researcher, Software & Game Developer" />
   
   <!-- FONTS -->
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
   <style>
     :root{
-      --bg: #0b0b0b;        
-      --panel: #0f0f0f;     
-      --fg: #ffffff;        
-      --muted: #d0d0d0;   
-      --gold: #d6af3b;      
-      --mag: #6a0748;      
+      --bg: #0a0a0a;
+      --bg-secondary: #111111;
+      --fg: #ffffff;
+      --fg-muted: #b0b0b0;
+      --accent: #8b1a5c;
+      --accent-dark: #6a0748;
+      --border: rgba(255,255,255,0.1);
       --glass: rgba(255,255,255,0.03);
-      --radius: 12px;
-      --max-width: 1100px;
     }
 
-    /* Reset & basics */
-    *{box-sizing:border-box}
-    html,body{height:100%}
-    body{
-      margin:0;
-      font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
-      background: linear-gradient(180deg,var(--bg) 0%, #070707 100%);
-      color:var(--fg);
-      -webkit-font-smoothing:antialiased;
-      -moz-osx-font-smoothing:grayscale;
-      line-height:1.45;
-      padding:36px 20px;
-      display:flex;
-      justify-content:center;
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
     }
 
-    /* Container */
-    .wrap{
-      width:100%;
-      max-width:var(--max-width);
-      margin:0 auto;
+    html {
+      scroll-behavior: smooth;
     }
 
-    header{
-      display:flex;
-      gap:16px;
-      align-items:center;
-      justify-content:space-between;
-      margin-bottom:28px;\    }
-
-    .brand{
-      display:flex;gap:14px;align-items:center
+    body {
+      font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+      background: var(--bg);
+      color: var(--fg);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      overflow-x: hidden;
     }
 
-    .logo{
-      width:56px;height:56px;border-radius:12px;background:linear-gradient(135deg,var(--gold),var(--mag));
-      display:flex;align-items:center;justify-content:center;font-weight:700;color:var(--bg);font-size:18px;
-      box-shadow:0 6px 20px rgba(0,0,0,0.6);
+    /* Navigation */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      background: rgba(10, 10, 10, 0.8);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border);
+      padding: 1rem 2rem;
     }
 
-    .name{font-size:18px;font-weight:700;letter-spacing:0.2px}
-    .subtitle{font-size:13px;color:var(--muted);margin-top:2px}
-
-    nav a{color:var(--muted);text-decoration:none;margin-left:18px;font-weight:600}
-    nav a.cta{background:linear-gradient(90deg,var(--gold),var(--mag));padding:8px 12px;border-radius:8px;color:var(--bg);}
-
-    main{
-      display:grid;grid-template-columns: 1fr 380px;gap:28px;align-items:start;
+    nav .nav-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
     }
 
-    
-    .panel{background:linear-gradient(180deg,var(--panel), rgba(255,255,255,0.01));padding:20px;border-radius:var(--radius);box-shadow:0 10px 30px rgba(0,0,0,0.6)}
-
-    .hero{
-      padding:24px;border-radius:10px;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));margin-bottom:18px;
-      display:flex;flex-direction:column;gap:6px
+    nav .logo {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--fg);
+      text-decoration: none;
     }
 
-    .hero h1{margin:0;font-size:28px}
-    .hero p{margin:0;color:var(--muted)}
-
-    .project-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
-
-    .card{
-      background:linear-gradient(180deg,var(--glass), rgba(255,255,255,0.02));padding:12px;border-radius:12px;border:1px solid rgba(255,255,255,0.03);
-      min-height:120px;display:flex;flex-direction:column;justify-content:space-between
+    nav .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
     }
 
-    .card h3{margin:0;font-size:15px}
-    .card p{margin:6px 0 0 0;color:var(--muted);font-size:13px}
-    .tags{margin-top:8px;display:flex;gap:8px;flex-wrap:wrap}
-    .tag{font-size:12px;padding:6px 8px;border-radius:999px;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.02);color:var(--muted)}
+    nav .nav-links a {
+      color: var(--fg-muted);
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s;
+      position: relative;
+    }
 
-    .card .links{display:flex;gap:8px;align-items:center;margin-top:10px}
-    .link-btn{font-size:13px;padding:6px 9px;border-radius:8px;background:transparent;border:1px solid rgba(255,255,255,0.04);color:var(--fg);text-decoration:none}
+    nav .nav-links a:hover {
+      color: var(--fg);
+    }
 
-    /* Right column: about / contact */
-    .aside{position:relative}
-    .about{padding:18px;border-radius:12px;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));}
-    .about h4{margin:0 0 6px 0}
-    .about p{margin:0;color:var(--muted);font-size:14px}
+    nav .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--accent);
+      transition: width 0.3s;
+    }
 
-    .cv{display:flex;gap:10px;margin-top:12px}
-    .btn{display:inline-block;padding:10px 14px;border-radius:10px;text-decoration:none;font-weight:700}
-    .btn-outline{border:1px solid rgba(255,255,255,0.06);background:transparent;color:var(--fg)}
-    .btn-primary{background:linear-gradient(90deg,var(--gold),var(--mag));color:var(--bg)}
+    nav .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    /* Hero Section */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 8rem 2rem 4rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      font-weight: 800;
+      margin-bottom: 1rem;
+      line-height: 1.2;
+    }
+
+    .hero .subtitle {
+      font-size: clamp(1.1rem, 2vw, 1.5rem);
+      color: var(--fg-muted);
+      margin-bottom: 2rem;
+      font-weight: 400;
+    }
+
+    .hero .description {
+      font-size: 1.1rem;
+      color: var(--fg-muted);
+      max-width: 700px;
+      margin: 0 auto 3rem;
+    }
+
+    /* Featured In */
+    .featured {
+      padding: 2rem;
+      text-align: center;
+      color: var(--fg-muted);
+      font-size: 0.9rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    /* Section Styles */
+    section {
+      padding: 6rem 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .section-title {
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 700;
+      margin-bottom: 3rem;
+      text-align: center;
+    }
+
+    /* Expertise Section */
+    .expertise-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+
+    .expertise-card {
+      background: var(--bg-secondary);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 2rem;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .expertise-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 30px rgba(139, 26, 92, 0.2);
+    }
+
+    .expertise-card h3 {
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+      font-weight: 600;
+    }
+
+    .expertise-card p {
+      color: var(--fg-muted);
+      line-height: 1.7;
+    }
+
+    /* Work Section */
+    .work-filters {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin-bottom: 3rem;
+      flex-wrap: wrap;
+    }
+
+    .filter-btn {
+      background: transparent;
+      border: 1px solid var(--border);
+      color: var(--fg-muted);
+      padding: 0.6rem 1.2rem;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: 500;
+      transition: all 0.3s;
+      font-family: inherit;
+    }
+
+    .filter-btn:hover,
+    .filter-btn.active {
+      background: var(--accent-dark);
+      border-color: var(--accent-dark);
+      color: var(--fg);
+    }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+
+    .project-card {
+      background: var(--bg-secondary);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .project-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 30px rgba(139, 26, 92, 0.2);
+    }
+
+    .project-card-content {
+      padding: 1.5rem;
+    }
+
+    .project-card h3 {
+      font-size: 1.3rem;
+      margin-bottom: 0.5rem;
+      font-weight: 600;
+    }
+
+    .project-card p {
+      color: var(--fg-muted);
+      margin-bottom: 1rem;
+      font-size: 0.95rem;
+    }
+
+    .project-tags {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+      margin-bottom: 1rem;
+    }
+
+    .tag {
+      background: var(--glass);
+      border: 1px solid var(--border);
+      padding: 0.3rem 0.8rem;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      color: var(--fg-muted);
+    }
+
+    .project-link {
+      display: inline-block;
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 600;
+      transition: color 0.3s;
+    }
+
+    .project-link:hover {
+      color: var(--accent-dark);
+    }
+
+    /* Experience Section */
+    .experience-timeline {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .experience-item {
+      background: var(--bg-secondary);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 2rem;
+      margin-bottom: 2rem;
+      position: relative;
+    }
+
+    .experience-item h3 {
+      font-size: 1.3rem;
+      margin-bottom: 0.5rem;
+      font-weight: 600;
+    }
+
+    .experience-item .role {
+      color: var(--accent);
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+    }
+
+    .experience-item .period {
+      color: var(--fg-muted);
+      font-size: 0.9rem;
+      margin-bottom: 1rem;
+    }
+
+    .experience-item .location {
+      color: var(--fg-muted);
+      font-size: 0.9rem;
+      margin-bottom: 1rem;
+    }
+
+    .experience-item p {
+      color: var(--fg-muted);
+      line-height: 1.7;
+      margin-bottom: 1rem;
+    }
+
+    .experience-skills {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+      margin-top: 1rem;
+    }
+
+    .experience-skills span {
+      background: var(--glass);
+      border: 1px solid var(--border);
+      padding: 0.3rem 0.8rem;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      color: var(--fg-muted);
+    }
+
+    /* Contact Section */
+    .contact {
+      text-align: center;
+      padding: 6rem 2rem;
+    }
+
+    .contact h2 {
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 700;
+      margin-bottom: 1rem;
+    }
+
+    .contact p {
+      color: var(--fg-muted);
+      font-size: 1.1rem;
+      margin-bottom: 2rem;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .contact-info {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      flex-wrap: wrap;
+      margin-bottom: 2rem;
+    }
+
+    .contact-link {
+      color: var(--fg-muted);
+      text-decoration: none;
+      transition: color 0.3s;
+      font-weight: 500;
+    }
+
+    .contact-link:hover {
+      color: var(--accent);
+    }
+
+    .social-links {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+
+    .social-link {
+      color: var(--fg-muted);
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+
+    .social-link:hover {
+      color: var(--accent);
+    }
+
+    /* Buttons */
+    .btn {
+      display: inline-block;
+      padding: 0.75rem 1.5rem;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.3s;
+      border: none;
+      cursor: pointer;
+      font-family: inherit;
+      font-size: 1rem;
+    }
+
+    .btn-primary {
+      background: var(--accent-dark);
+      color: var(--fg);
+    }
+
+    .btn-primary:hover {
+      background: var(--accent);
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(139, 26, 92, 0.4);
+    }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--fg);
+      border: 1px solid var(--border);
+    }
+
+    .btn-outline:hover {
+      background: var(--bg-secondary);
+      border-color: var(--accent);
+    }
 
     /* Footer */
-    footer{margin-top:22px;color:var(--muted);text-align:center;font-size:13px}
-
-    /* Responsive */
-    @media (max-width:980px){
-      main{grid-template-columns:1fr;}
-      .project-grid{grid-template-columns:1fr}
-      .logo{width:48px;height:48px}
+    footer {
+      text-align: center;
+      padding: 3rem 2rem;
+      color: var(--fg-muted);
+      border-top: 1px solid var(--border);
+      max-width: 1200px;
+      margin: 0 auto;
     }
 
-    /* Accessibility focus */
-    a:focus, button:focus{outline:3px solid rgba(214,175,59,0.18);outline-offset:2px}
+    /* Responsive */
+    @media (max-width: 768px) {
+      nav {
+        padding: 1rem;
+      }
 
+      nav .nav-links {
+        gap: 1rem;
+        font-size: 0.9rem;
+      }
+
+      .hero {
+        padding: 6rem 1rem 3rem;
+      }
+
+      section {
+        padding: 4rem 1rem;
+      }
+
+      .expertise-grid,
+      .projects-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .work-filters {
+        gap: 0.5rem;
+      }
+
+      .filter-btn {
+        padding: 0.5rem 1rem;
+        font-size: 0.9rem;
+      }
+    }
+
+    /* Scroll to top button */
+    .scroll-top {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      width: 50px;
+      height: 50px;
+      background: var(--accent-dark);
+      color: var(--fg);
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      transition: all 0.3s;
+      z-index: 999;
+    }
+
+    .scroll-top:hover {
+      background: var(--accent);
+      transform: translateY(-3px);
+    }
+
+    .scroll-top.visible {
+      display: flex;
+    }
   </style>
 </head>
 <body>
-  <div class="wrap">
-    <header>
-      <div class="brand">
-        <div class="logo" aria-hidden>CL</div>
-        <div>
-          <div class="name">Claude Le (PC Makia)</div>
-          <div class="subtitle">Bachelor's student • AI researcher • Software & Game dev</div>
-        </div>
-      </div>
+  <!-- Navigation -->
+  <nav>
+    <div class="nav-container">
+      <a href="#home" class="logo">Claude Le</a>
+      <ul class="nav-links">
+        <li><a href="#home">home</a></li>
+        <li><a href="#expertise">expertise</a></li>
+        <li><a href="#work">work</a></li>
+        <li><a href="#experience">experience</a></li>
+        <li><a href="#contact">contact</a></li>
+      </ul>
+    </div>
+  </nav>
 
-      <nav aria-label="Main navigation">
-        <a href="#projects">Projects</a>
-        <a href="#about">About</a>
-        <a href="#contact" class="cta">Contact / CV</a>
-      </nav>
-    </header>
+  <!-- Hero Section -->
+  <section id="home" class="hero">
+    <h1>Claude Le</h1>
+    <p class="subtitle">Bachelor's student • AI researcher • Software & Game dev</p>
+    <p class="description">I focus on readable code, utilities projects and Machine Learning technique. Currently, exploring game development tool (Unity) and novel ML training technique.</p>
+  </section>
 
-    <main>
-      <section>
-        <div class="panel">
-          <div class="hero">
-            <h1>Hi — I'm Claude. I build ML systems, tools in Python & C++.</h1>
-            <p>I focus on readable code, ultilities projects and Machine Learning technique. Currently, exploring game development tool (Unity) and novel ML training technique. Below are select projects from my GitHub.</p>
-          </div>
-
-          <h2 id="projects" style="margin:0 0 12px 6px;font-size:14px;color:var(--muted)">Selected projects</h2>
-
-          <div class="project-grid">
-            <!-- PROJECT CARD -->
-            <article class="card">
-              <div>
-                <h3>Project Title — AI agent Experiment</h3>
-                <p>A coder agent based by Gemini model. Helps with code reading, editing, and suggestion with debugging</p>
-                <div class="tags"><span class="tag">Python</span><span class="tag">PyTorch</span><span class="tag">AI</span></div>
-              </div>
-              <div class="links">
-                <a class="link-btn" href="https://github.com/PCMakia/agenta">View repo</a>
-              </div>
-            </article>
-
-            <article class="card">
-              <div>
-                <h3>Steam reviews analyzer</h3>
-                <p>A code based tool that helps with analysing the sentiment and output list of words that represent the majority reviews of a game</p>
-                <div class="tags"><span class="tag">Python</span><span class="tag">NLTK</span></div>
-              </div>
-              <div class="links"><a class="link-btn" href="https://github.com/PCMakia/STEAM-Review-Analyzer">View repo</a></div>
-            </article>
-
-            <article class="card">
-              <div>
-                <h3>Lazer Balls - asteroid shooter</h3>
-                <p>A simple shooter game by Pygame. Dodge the incoming balls or shoot them down.</p>
-                <div class="tags"><span class="tag">Pygame</span><span class="tag">Python</span><span class="tag">Demo</span></div>
-              </div>
-              <div class="links"><a class="link-btn" href="#">Play (under construction)</a><a class="link-btn" href="https://github.com/PCMakia/Lazer_Balls">Source</a></div>
-            </article>
-
-            <article class="card">
-              <div>
-                <h3>Other / Coursework</h3>
-                <p>A simple Shell for Operating System CSC 428</p>
-                <div class="tags"><span class="tag">C</span><span class="tag">Unix_Shell</span></div>
-              </div>
-              <div class="links"><a class="link-btn" href="https://github.com/PCMakia/Simple-Shell-C">View repo</a></div>
-            </article>
-
-          </div>
-
-        </div>
-
-        <footer>
-          <p></p>
-        </footer>
-      </section>
-
-      <aside class="aside">
-        <div class="about panel">
-          <div class="about">
-            <h4 id="about">About me</h4>
-            <p>I am a bachelor's student and self-funded researcher focusing on machine learning, systems programming, and interactive simulations. I care about reproducible results and user centered in my games.</p>
-            <div class="cv">
-              <a class="btn btn-outline" href="assets/PC_Makia_resume.pdf" download>Download CV</a>
-              <a class="btn btn-primary" href="#contact">Contact</a>
-            </div>
-          </div>
-        </div>
-
-        <div style="height:18px"></div>
-
-        <div class="panel" style="padding:14px">
-          <h4 style="margin:0 0 10px 0">Contact</h4>
-          <p style="margin:0 0 12px 0;color:var(--muted)">Email: <strong>baole24865@gmail.com</strong></p>
-          <p style="margin:0 0 12px 0;color:var(--muted)">GitHub: <a href="https://github.com/PCMakia" style="color:var(--gold);text-decoration:none">github.com/PCMakia</a></p>
-
-          <div style="display:flex;gap:8px;margin-top:8px">
-            <a class="btn btn-outline" href="https://www.linkedin.com/in/bảo-lê-43872b26a">LinkedIn</a>
-            <a class="btn btn-outline" href="https://x.com/home">X</a>
-          </div>
-        </div>
-
-      </aside>
-    </main>
+  <!-- Featured In -->
+  <div class="featured">
+    <p>Standing specialties</p>
   </div>
 
+  <!-- Expertise Section -->
+  <section id="expertise">
+    <h2 class="section-title">My Expertise</h2>
+    <div class="expertise-grid">
+      <div class="expertise-card">
+        <h3>Software Development</h3>
+        <p>Experienced in both functional and OOP: Python, C++, Java, JavaScript. Focus on clean, readable code and efficient algorithms.</p>
+      </div>
+      <div class="expertise-card">
+        <h3>Machine Learning & AI</h3>
+        <p>Research and development in ML systems, neural networks, and AI agents. Experience with PyTorch, TensorFlow, and novel training techniques.</p>
+      </div>
+      <div class="expertise-card">
+        <h3>Game Development</h3>
+        <p>Developing interactive simulations and games using Unity, Pygame, and C++. Passionate about user-centered design and engaging gameplay.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Work Section -->
+  <section id="work">
+    <h2 class="section-title">My Work</h2>
+    <p style="text-align: center; color: var(--fg-muted); margin-bottom: 2rem; max-width: 700px; margin-left: auto; margin-right: auto;">
+      Building ML systems, tools in Python & C++, and exploring game development. Below are selected projects from my GitHub.
+    </p>
+    
+    <div class="work-filters">
+      <button class="filter-btn active" data-filter="all">All</button>
+      <button class="filter-btn" data-filter="ai">AI/ML</button>
+      <button class="filter-btn" data-filter="web">Web Development</button>
+      <button class="filter-btn" data-filter="game">Game Development</button>
+      <button class="filter-btn" data-filter="tools">Tools</button>
+    </div>
+
+    <div class="projects-grid">
+      <article class="project-card" data-category="ai">
+        <div class="project-card-content">
+          <h3>Project Title — AI agent Experiment</h3>
+          <p>A coder agent based by Gemini model. Helps with code reading, editing, and suggestion with debugging.</p>
+          <div class="project-tags">
+            <span class="tag">Python</span>
+            <span class="tag">PyTorch</span>
+            <span class="tag">AI</span>
+          </div>
+          <a href="https://github.com/PCMakia/agenta" class="project-link" target="_blank">View Project →</a>
+        </div>
+      </article>
+
+      <article class="project-card" data-category="tools">
+        <div class="project-card-content">
+          <h3>Steam reviews analyzer</h3>
+          <p>A code based tool that helps with analysing the sentiment and output list of words that represent the majority reviews of a game.</p>
+          <div class="project-tags">
+            <span class="tag">Python</span>
+            <span class="tag">NLTK</span>
+          </div>
+          <a href="https://github.com/PCMakia/STEAM-Review-Analyzer" class="project-link" target="_blank">View Project →</a>
+        </div>
+      </article>
+
+      <article class="project-card" data-category="game">
+        <div class="project-card-content">
+          <h3>Lazer Balls - asteroid shooter</h3>
+          <p>A simple shooter game by Pygame. Dodge the incoming balls or shoot them down.</p>
+          <div class="project-tags">
+            <span class="tag">Pygame</span>
+            <span class="tag">Python</span>
+            <span class="tag">Demo</span>
+          </div>
+          <a href="https://github.com/PCMakia/Lazer_Balls" class="project-link" target="_blank">View Project →</a>
+        </div>
+      </article>
+
+      <article class="project-card" data-category="tools">
+        <div class="project-card-content">
+          <h3>Other / Coursework</h3>
+          <p>A simple Shell for Operating System CSC 428</p>
+          <div class="project-tags">
+            <span class="tag">C</span>
+            <span class="tag">Unix_Shell</span>
+          </div>
+          <a href="https://github.com/PCMakia/Simple-Shell-C" class="project-link" target="_blank">View Project →</a>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- Experience Section -->
+  <section id="experience">
+    <h2 class="section-title">Professional Experience</h2>
+    <div class="experience-timeline">
+      <div class="experience-item">
+        <div class="role">Bachelor's Student & Self-funded Researcher</div>
+        <h3>Current</h3>
+        <div class="period">Present</div>
+        <p>Focusing on machine learning, systems programming, and interactive simulations. Researching novel ML training techniques and developing game development tools. Committed to reproducible results and user-centered design in games.</p>
+        <div class="experience-skills">
+          <span>Python</span>
+          <span>C++</span>
+          <span>PyTorch</span>
+          <span>Unity</span>
+          <span>ML Research</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="contact">
+    <h2>Available for collaborating opportunities</h2>
+    <p>Have an exciting project you need help with? Send me an email or contact me via instant message!</p>
+    
+    <div class="contact-info">
+      <a href="mailto:baole24865@gmail.com" class="contact-link">baole24865@gmail.com</a>
+    </div>
+
+    <div class="social-links">
+      <a href="https://github.com/PCMakia" class="social-link" target="_blank">GitHub</a>
+      <a href="https://www.linkedin.com/in/bảo-lê-43872b26a" class="social-link" target="_blank">LinkedIn</a>
+      <a href="https://x.com/home" class="social-link" target="_blank">X</a>
+    </div>
+
+    <div style="margin-top: 2rem;">
+      <a href="assets/PC_Makia_resume.pdf" class="btn btn-primary" download>Download CV</a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>© 2024. Made with passion by Claude Le (PC Makia). All rights reserved.</p>
+  </footer>
+
+  <!-- Scroll to Top Button -->
+  <button class="scroll-top" id="scrollTop" aria-label="Scroll to top">↑</button>
+
+  <script>
+    // Filter functionality
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    const projectCards = document.querySelectorAll('.project-card');
+
+    filterButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        // Remove active class from all buttons
+        filterButtons.forEach(b => b.classList.remove('active'));
+        // Add active class to clicked button
+        btn.classList.add('active');
+
+        const filter = btn.getAttribute('data-filter');
+
+        projectCards.forEach(card => {
+          if (filter === 'all' || card.getAttribute('data-category') === filter) {
+            card.style.display = 'block';
+          } else {
+            card.style.display = 'none';
+          }
+        });
+      });
+    });
+
+    // Scroll to top functionality
+    const scrollTopBtn = document.getElementById('scrollTop');
+
+    window.addEventListener('scroll', () => {
+      if (window.pageYOffset > 300) {
+        scrollTopBtn.classList.add('visible');
+      } else {
+        scrollTopBtn.classList.remove('visible');
+      }
+    });
+
+    scrollTopBtn.addEventListener('click', () => {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    });
+
+    // Smooth scroll for navigation links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+        }
+      });
+    });
+  </script>
 </body>
 </html>
