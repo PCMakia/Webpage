@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Lazer Balls — Demo</title>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0a0a0a;
+      --bg-secondary: #111111;
+      --fg: #ffffff;
+      --fg-muted: #b0b0b0;
+      --accent: #8b1a5c;
+      --accent-dark: #6a0748;
+      --border: rgba(255,255,255,0.1);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Inter', system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--fg);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 1.5rem;
+    }
+    .demo-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+      max-width: 900px;
+      margin-bottom: 1rem;
+    }
+    .demo-header h1 { font-size: 1.25rem; font-weight: 700; }
+    .back-link {
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.95rem;
+    }
+    .back-link:hover { color: var(--accent-dark); text-decoration: underline; }
+    .game-container {
+      background: var(--bg-secondary);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      width: 100%;
+      max-width: 900px;
+      aspect-ratio: 4/3;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 400px;
+    }
+    .game-placeholder {
+      color: var(--fg-muted);
+      text-align: center;
+      padding: 2rem;
+    }
+    .game-placeholder p { margin-top: 0.5rem; font-size: 0.9rem; }
+  </style>
+</head>
+<body>
+  <div class="demo-header">
+    <h1>Lazer Balls</h1>
+    <a href="../index.html#work" class="back-link" target="_top">← Back to portfolio</a>
+  </div>
+  <div class="game-container" id="game-container">
+    <div class="game-placeholder" id="game-placeholder">
+      <p>Game canvas will load here.</p>
+      <p>Demo coming soon — Pygame/Pygbag build in progress.</p>
+    </div>
+    <!-- Canvas for Pygame/Pygbag game can be inserted here -->
+  </div>
+</body>
+</html>

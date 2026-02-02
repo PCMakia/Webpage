@@ -273,6 +273,13 @@
       color: var(--fg-muted);
     }
 
+    .project-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      align-items: center;
+    }
+
     .project-link {
       display: inline-block;
       color: var(--accent);
@@ -283,6 +290,28 @@
 
     .project-link:hover {
       color: var(--accent-dark);
+    }
+
+    .demo-btn {
+      display: inline-block;
+      padding: 0.5rem 1rem;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.9rem;
+      font-family: inherit;
+      background: var(--accent-dark);
+      color: var(--fg);
+      border: 1px solid var(--accent-dark);
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+
+    .demo-btn:hover {
+      background: var(--accent);
+      border-color: var(--accent);
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(139, 26, 92, 0.4);
     }
 
     /* Experience Section */
@@ -586,7 +615,10 @@
             <span class="tag">Python</span>
             <span class="tag">Demo</span>
           </div>
-          <a href="https://github.com/PCMakia/Dungeon-Diver" class="project-link" target="_blank">View Project →</a>
+          <div class="project-actions">
+            <a href="https://github.com/PCMakia/Dungeon-Diver" class="project-link" target="_blank">View Project →</a>
+            <a href="demos/dungeon-diver/" class="demo-btn" target="_blank">Try Demo</a>
+          </div>
         </div>
       </article>
 
@@ -599,7 +631,9 @@
             <span class="tag">PyTorch</span>
             <span class="tag">AI</span>
           </div>
-          <a href="https://github.com/PCMakia/agenta" class="project-link" target="_blank">View Project →</a>
+          <div class="project-actions">
+            <a href="https://github.com/PCMakia/agenta" class="project-link" target="_blank">View Project →</a>
+          </div>
         </div>
       </article>
 
@@ -611,7 +645,9 @@
             <span class="tag">Python</span>
             <span class="tag">NLTK</span>
           </div>
-          <a href="https://github.com/PCMakia/STEAM-Review-Analyzer" class="project-link" target="_blank">View Project →</a>
+          <div class="project-actions">
+            <a href="https://github.com/PCMakia/STEAM-Review-Analyzer" class="project-link" target="_blank">View Project →</a>
+          </div>
         </div>
       </article>
 
@@ -624,7 +660,10 @@
             <span class="tag">Python</span>
             <span class="tag">Demo</span>
           </div>
-          <a href="https://github.com/PCMakia/Lazer_Balls" class="project-link" target="_blank">View Project →</a>
+          <div class="project-actions">
+            <a href="https://github.com/PCMakia/Lazer_Balls" class="project-link" target="_blank">View Project →</a>
+            <a href="demos/lazer-balls.html" class="demo-btn" data-demo-src="demos/lazer-balls.html" data-project-id="lazer-balls" role="button">Try Demo</a>
+          </div>
         </div>
       </article>
 
@@ -636,7 +675,9 @@
             <span class="tag">C</span>
             <span class="tag">Unix_Shell</span>
           </div>
-          <a href="https://github.com/PCMakia/Simple-Shell-C" class="project-link" target="_blank">View Project →</a>
+          <div class="project-actions">
+            <a href="https://github.com/PCMakia/Simple-Shell-C" class="project-link" target="_blank">View Project →</a>
+          </div>
         </div>
       </article>
     </div>
@@ -694,6 +735,18 @@
   <!-- Scroll to Top Button -->
   <button class="scroll-top" id="scrollTop" aria-label="Scroll to top">↑</button>
 
+  <!-- Demo Modal -->
+  <div class="demo-modal-overlay" id="demoModal" aria-hidden="true">
+    <div class="demo-modal-container">
+      <button type="button" class="demo-modal-close" id="demoModalClose" aria-label="Close demo">×</button>
+      <div class="demo-modal-loading" id="demoModalLoading">
+        <div class="demo-modal-loading-spinner"></div>
+        <span>Loading demo…</span>
+      </div>
+      <iframe class="demo-modal-iframe" id="demoModalIframe" title="Demo"></iframe>
+    </div>
+  </div>
+
   <script>
     // Filter functionality
     const filterButtons = document.querySelectorAll('.filter-btn');
@@ -748,6 +801,64 @@
           });
         }
       });
+    });
+
+    // Demo modal: open, load demo page by project ID, close and cleanup
+    const demoModal = document.getElementById('demoModal');
+    const demoModalClose = document.getElementById('demoModalClose');
+    const demoModalLoading = document.getElementById('demoModalLoading');
+    const demoModalIframe = document.getElementById('demoModalIframe');
+
+    const demoUrlByProjectId = {
+      'dungeon-diver': 'demos/dungeon-diver.html',
+      'lazer-balls': 'demos/lazer-balls.html'
+    };
+
+    function openDemoModal(demoSrc) {
+      const src = demoSrc || '';
+      if (!src) return;
+      demoModal.classList.add('visible');
+      demoModal.setAttribute('aria-hidden', 'false');
+      demoModalLoading.classList.remove('hidden');
+      demoModalIframe.style.visibility = 'hidden';
+      demoModalIframe.src = src;
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeDemoModal() {
+      demoModal.classList.remove('visible');
+      demoModal.setAttribute('aria-hidden', 'true');
+      demoModalIframe.src = 'about:blank';
+      demoModalLoading.classList.remove('hidden');
+      demoModalIframe.style.visibility = '';
+      document.body.style.overflow = '';
+    }
+
+    demoModalIframe.addEventListener('load', () => {
+      demoModalLoading.classList.add('hidden');
+      demoModalIframe.style.visibility = 'visible';
+    });
+
+    document.querySelectorAll('.demo-btn').forEach(btn => {
+      btn.addEventListener('click', function (e) {
+        e.preventDefault();
+        const demoSrc = this.getAttribute('data-demo-src');
+        const projectId = this.getAttribute('data-project-id');
+        const src = demoSrc || demoUrlByProjectId[projectId];
+        openDemoModal(src);
+      });
+    });
+
+    demoModalClose.addEventListener('click', closeDemoModal);
+
+    demoModal.addEventListener('click', function (e) {
+      if (e.target === demoModal) closeDemoModal();
+    });
+
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && demoModal.classList.contains('visible')) {
+        closeDemoModal();
+      }
     });
   </script>
 </body>
