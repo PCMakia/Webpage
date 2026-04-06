@@ -1,6 +1,7 @@
 import React from 'react';
 import { ArrowLeft } from 'lucide-react';
 import { useNavigate } from 'react-router';
+import { withBase } from '../utils/withBase';
 
 export function DungeonDiverDemo() {
   const navigate = useNavigate();
@@ -57,7 +58,7 @@ export function DungeonDiverDemo() {
         <div className="bg-[#111111] border border-[rgba(255,255,255,0.1)] rounded-xl overflow-hidden">
           <div className="w-full bg-[#0b0b0b] p-4 sm:p-6 flex justify-center">
             <iframe
-              src="/dungeon-diver/index.html"
+              src={withBase("/dungeon-diver/index.html")}
               title="Dungeon Diver - Web Demo"
               className="h-[min(90vh,820px)] w-auto max-w-full [aspect-ratio:16/9] border-0 outline-none focus:outline-none block bg-black"
               allow="autoplay; fullscreen; gamepad; microphone; clipboard-read; clipboard-write"

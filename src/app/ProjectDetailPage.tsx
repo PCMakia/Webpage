@@ -1,6 +1,7 @@
 import { ArrowLeft } from 'lucide-react';
 import { Link, useNavigate, useParams } from 'react-router';
 import { getProjectById } from './data/projects';
+import { withBase } from './utils/withBase';
 
 export function ProjectDetailPage() {
   const { projectId } = useParams<{ projectId: string }>();
@@ -102,7 +103,7 @@ export function ProjectDetailPage() {
                   controls
                   preload="metadata"
                 >
-                  <source src={project.videoSrc} />
+                  <source src={withBase(project.videoSrc)} />
                   Your browser does not support the video tag.
                 </video>
               ) : (

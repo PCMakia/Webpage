@@ -7,6 +7,7 @@ import { Experience } from "./components/Experience";
 import { Contact } from "./components/Contact";
 import { Footer } from "./components/Footer";
 import { ScrollToTop } from "./components/ScrollToTop";
+import { withBase } from "./utils/withBase";
 
 export function Portfolio() {
   const [scrollY, setScrollY] = useState(0);
@@ -55,7 +56,7 @@ export function Portfolio() {
         */}
         {/* Fallback image - shows if video doesn't load */}
         <img
-          src="assets/BG_backup.jpg"
+          src={withBase("assets/BG_backup.jpg")}
           alt=""
           className="absolute inset-0 w-full h-full object-cover"
         />
@@ -64,12 +65,12 @@ export function Portfolio() {
           muted
           loop
           playsInline
-          poster="assets/BG_backup.jpg"
+          poster={withBase("assets/BG_backup.jpg")}
           className="absolute inset-0 w-full h-full object-cover"
           key={isMobile ? 'mobile' : 'desktop'} // Force re-render when switching
         >
           <source 
-            src={isMobile ? "/videos/mobile-intro.mp4" : "/videos/desktop-intro.mp4"} 
+            src={withBase(isMobile ? "/videos/mobile-intro.mp4" : "/videos/desktop-intro.mp4")} 
             type="video/mp4" 
           />
         </video>

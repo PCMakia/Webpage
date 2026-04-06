@@ -1,5 +1,6 @@
 import { ArrowLeft } from 'lucide-react';
 import { useNavigate } from 'react-router';
+import { withBase } from '../utils/withBase';
 
 export function LazerBallsDemo() {
   const navigate = useNavigate();
@@ -56,7 +57,7 @@ export function LazerBallsDemo() {
         <div className="bg-[#111111] border border-[rgba(255,255,255,0.1)] rounded-xl overflow-hidden">
           <div className="w-full bg-[#7f7f7f] min-h-[min(85vh,640px)]">
             <iframe
-              src="/lazer-ball/build/web/index.html"
+              src={withBase("/lazer-ball/build/web/index.html")}
               title="Lazer Balls — Pygbag demo"
               className="w-full h-[min(85vh,640px)] border-0 block"
               allow="autoplay; fullscreen; gamepad; microphone; clipboard-read; clipboard-write"
