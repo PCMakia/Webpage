@@ -20,7 +20,7 @@ export const projects: ProjectEntry[] = [
       'Your own chatbot assistant, host locally on your own device. No longer you have to expose company private data to the AI companies. Built with Python, PyTorch, FastAPI, and Websocket.',
     detail:
       'Personal Agent Assistant is a locally hosted AI assistant focused on privacy, with Dockerized backend services, Ollama integration, and a desktop chat GUI. It also includes real-time WebSocket events, optional TTS endpoints, and memory/logging workflows for agent interactions.',
-    tags: ['Java', 'Android', 'Cubism for Java SDK'],
+    tags: ['Python', 'LLM', 'Pytorch', 'FastAPI', 'Websocket', 'Docker', "Desktop Application"],
     category: 'ai',
     link: 'https://github.com/PCMakia/Personal-Assistant',
   },
@@ -54,7 +54,7 @@ export const projects: ProjectEntry[] = [
       'A coder agent based by Gemini model. Helps with code reading, editing, and suggestion with debugging.',
     detail:
       'Agent A is an experimental coding assistant project focused on code reading, editing, and debugging workflows with Gemini-based models.',
-    tags: ['Python', 'PyTorch', 'AI'],
+    tags: ['Python', 'PyTorch', 'AI','Gemini'],
     category: 'ai',
     link: 'https://github.com/PCMakia/agenta',
   },
