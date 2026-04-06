@@ -19,7 +19,7 @@ export const projects: ProjectEntry[] = [
     description:
       'Your own chatbot assistant, host locally on your own device. No longer you have to expose company private data to the AI companies. Built with Python, PyTorch, FastAPI, and Websocket.',
     detail:
-      'This project is a private, locally hosted assistant so sensitive prompts and documents stay on your machine. It uses FastAPI and WebSockets for responsive streaming responses, with PyTorch-based models where needed. Replace this text in `src/app/data/projects.ts` with your full write-up, architecture notes, and setup steps.',
+      'Personal Agent Assistant is a locally hosted AI assistant focused on privacy, with Dockerized backend services, Ollama integration, and a desktop chat GUI. It also includes real-time WebSocket events, optional TTS endpoints, and memory/logging workflows for agent interactions.',
     tags: ['Java', 'Android', 'Cubism for Java SDK'],
     category: 'ai',
     link: 'https://github.com/PCMakia/Personal-Assistant',
@@ -30,7 +30,7 @@ export const projects: ProjectEntry[] = [
     description:
       'An android app featuring a Live2D Cubism avatar that can be controlled by the connecting LLM agent. Built with Java and Cubism SDK.',
     detail:
-      'Agent Mobile connects a Live2D avatar on Android to an external LLM agent, animating expressions and motion from agent output. Built with Java and the Cubism SDK. Expand this section with integration details, supported models, and build instructions.',
+      'Agent Mobile is an Android frontend built with Cubism SDK that brings a Live2D avatar to life and connects it to an LLM agent over WebSocket. The app supports avatar interaction and is designed to visualize model responses through animated character behavior.',
     tags: ['Java', 'Android', 'Cubism for Java SDK'],
     category: 'android',
     link: 'https://github.com/PCMakia/Agent_mobile',
@@ -41,7 +41,7 @@ export const projects: ProjectEntry[] = [
     description:
       'A single player RPG 2D game featuring a female hunter hunting down monsters in a dungeon.',
     detail:
-      'Dungeon Diver is a single-player 2D RPG focused on dungeon combat and exploration. Core logic uses Rust for performance; tooling and scripts may use Python. Use the interactive demo page for playable builds when available; this page is for narrative, tech stack, and a short gameplay clip.',
+      'Dungeon Diver is a Rust + Raylib 2D dungeon game where the player explores maze-like floors, defeats monsters, and escapes for higher score. The current build features multiple environments and enemy types, with gameplay centered on exploration, combat, and survival.',
     tags: ['Rust', 'Python', 'Demo'],
     category: 'game',
     link: 'https://github.com/PCMakia/Dungeon-Diver',
@@ -53,7 +53,7 @@ export const projects: ProjectEntry[] = [
     description:
       'A coder agent based by Gemini model. Helps with code reading, editing, and suggestion with debugging.',
     detail:
-      'Agent A experiments with a Gemini-backed coding agent for read/edit/suggest workflows and debugging help. Describe your evaluation, limitations, and how you prompt or ground the model here.',
+      'Agent A is an experimental coding assistant project focused on code reading, editing, and debugging workflows with Gemini-based models.',
     tags: ['Python', 'PyTorch', 'AI'],
     category: 'ai',
     link: 'https://github.com/PCMakia/agenta',
@@ -64,7 +64,7 @@ export const projects: ProjectEntry[] = [
     description:
       'A code based tool that helps with analysing the sentiment and output list of words that represent the majority reviews of a game.',
     detail:
-      'This tool ingests Steam review text, runs sentiment-oriented analysis, and surfaces representative terms from the corpus. Built with Python and NLTK. Add dataset notes, CLI usage, and example outputs in this field.',
+      'STEAM Review Summarizer is a course project that analyzes Steam user-review sentiment and discussion themes using the UCSD Steam dataset and GloVe embeddings. The work emphasizes review processing, result interpretation, and collaborative reporting of findings.',
     tags: ['Python', 'NLTK'],
     category: 'tools',
     link: 'https://github.com/PCMakia/STEAM-Review-Analyzer',
@@ -74,7 +74,7 @@ export const projects: ProjectEntry[] = [
     title: 'Lazer Balls - asteroid shooter',
     description: 'A simple shooter game by Pygame. Dodge the incoming balls or shoot them down.',
     detail:
-      'Lazer Balls is a Pygame arcade shooter: dodge or destroy incoming balls. When a web build exists, use Try Demo; use the video below for a quick look at movement and shooting.',
+      'Lazer Balls is a fast-paced Pygame arcade shooter where the player dodges incoming hazards and shoots to survive longer. The project is playable via the web demo.',
     tags: ['Pygame', 'Python', 'Demo'],
     category: 'game',
     link: 'https://github.com/PCMakia/Lazer_Balls',
@@ -85,7 +85,7 @@ export const projects: ProjectEntry[] = [
     title: 'Other / Coursework',
     description: 'A simple Shell for Operating System CSC 428',
     detail:
-      'Coursework implementation of a small Unix-style shell in C for CSC 428: parsing, builtins, and process execution. Summarize supported features and how you tested them here.',
+      'Simple Shell C is a Unix-style shell coursework project that progresses from basic command execution and built-ins to pipelines, quoting/escaping, and globbing. Later iterations add custom utilities such as `sh_ls` and `sh_find` to demonstrate parsing and shell feature expansion.',
     tags: ['C', 'Unix_Shell'],
     category: 'tools',
     link: 'https://github.com/PCMakia/Simple-Shell-C',
