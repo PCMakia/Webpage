@@ -52,7 +52,7 @@ export function Contact() {
 
       <div>
         <a
-          href={withBase("/assets/PC_Makia_resume.pdf")}
+          href={withBase("/assets/PC_Makia_resume-0409.pdf")}
           download
           className="inline-block px-6 py-3 rounded-lg font-semibold transition-all bg-[#6a0748] text-white hover:bg-[#8b1a5c] hover:-translate-y-0.5 hover:shadow-[0_5px_15px_rgba(139,26,92,0.4)]"
         >
