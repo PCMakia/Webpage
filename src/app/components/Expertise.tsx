@@ -72,7 +72,7 @@ export function Expertise() {
               key={item.title}
               className={`rounded-xl border bg-[#111111] p-8 transition-all duration-300 ease-out ${
                 isActive
-                  ? 'z-10 -translate-y-1 border-[rgba(139,26,92,0.35)] shadow-[0_10px_32px_rgba(139,26,92,0.20),0_4px_20px_rgba(255,255,255,0.06)] ring-1 ring-[rgba(139,26,92,0.25)]'
+                  ? 'z-10 -translate-y-1 border-[rgba(139,26,92,0.55)] shadow-[0_20px_42px_rgba(139,26,92,0.4),0_4px_20px_rgba(255,255,255,0.06)] ring-1 ring-[rgba(139,26,92,0.25)]'
                   : 'translate-y-0 border-[rgba(255,255,255,0.1)] shadow-none ring-0'
               }`}
             >

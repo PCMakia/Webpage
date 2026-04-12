@@ -52,8 +52,8 @@ export function Work() {
             key={project.id}
             className={`relative rounded-xl border border-[rgba(255, 255, 255, 0.1)] bg-[#111111] transition-all duration-300 hover:-translate-y-1 ${
               project.featured
-                ? 'overflow-visible hover:shadow-[0_6px_28px_rgba(255,255,255,0.32),0_14px_48px_rgba(255,255,255,0.18),0_12px_36px_rgba(28,242,242,0.4)]'
-                : 'overflow-hidden hover:shadow-[0_10px_30px_rgba(139,26,92,0.4)]'
+                ? 'overflow-visible hover:shadow-[0_6px_28px_rgba(255,255,255,0.32),0_14px_48px_rgba(255,255,255,0.18),0_12px_36px_rgba(28,242,242,0.5)]'
+                : 'overflow-hidden hover:shadow-[0_20px_40px_rgba(139,26,92,0.6)]'
             }`}
           >
             {project.featured && (
