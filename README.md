@@ -3,7 +3,11 @@
 
   - Overhaul with vite
 
-  ## V2.1:
+  ## V2.2: Asthetic upgrade
+
+  - Add in wave motion to the Expertise tags
+
+  ## V2.1: Usagbility upgrade
 
   - Upgrade focus mode in game demo (lock arrow key page movement)
 
