@@ -1,6 +1,7 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router';
 import { projects } from '../data/projects';
+import { isFlagshipTag } from '../utils/isFlagshipTag';
 
 export function Work() {
   const [activeFilter, setActiveFilter] = useState('all');
@@ -49,18 +50,35 @@ export function Work() {
         {filteredProjects.map((project) => (
           <article
             key={project.id}
-            className="bg-[#111111] border border-[rgba(255,255,255,0.1)] rounded-xl overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_10px_30px_rgba(139,26,92,0.2)]"
+            className={`relative rounded-xl border border-[rgba(255,255,255,0.1)] bg-[#111111] transition-all duration-300 hover:-translate-y-1 ${
+              project.featured
+                ? 'overflow-visible hover:shadow-[0_6px_28px_rgba(255,255,255,0.22),0_14px_48px_rgba(255,255,255,0.18),0_12px_36px_rgba(139,26,92,0.4)]'
+                : 'overflow-hidden hover:shadow-[0_10px_30px_rgba(139,26,92,0.4)]'
+            }`}
           >
+            {project.featured && (
+              <div className="pointer-events-none absolute -right-1 top-3 z-10 origin-top-right" aria-hidden>
+                <div className="flex translate-x-2 rotate-12 items-center justify-center bg-[#ffd447] px-7 py-1.5 shadow-[0_4px_14px_rgba(0,0,0,0.35)] ring-1 ring-[#e6b400]/80">
+                  <span className="whitespace-nowrap text-[11px] font-extrabold uppercase tracking-wide text-[#a3006b]">
+                    Must checkout
+                  </span>
+                </div>
+              </div>
+            )}
             <div className="p-6">
-              <h3 className="text-xl mb-2 font-semibold">{project.title}</h3>
+              <h3 className="text-xl mb-2 font-semibold pr-24">{project.title}</h3>
               <p className="text-[#b0b0b0] mb-4 text-sm">{project.description}</p>
               
               {/* Tags */}
               <div className="flex gap-2 flex-wrap mb-4">
                 {project.tags.map((tag, i) => (
                   <span
-                    key={i}
-                    className="bg-[rgba(255,255,255,0.03)] border border-[rgba(255,255,255,0.1)] px-3 py-1.5 rounded-full text-xs text-[#b0b0b0]"
+                    key={`${tag}-${i}`}
+                    className={
+                      isFlagshipTag(tag)
+                        ? 'rounded-md border border-[#e6b400] bg-[#ffd447]/95 px-3 py-1.5 text-xs font-bold capitalize tracking-wide text-[#a3006b] shadow-sm'
+                        : 'rounded-full border border-[rgba(255,255,255,0.1)] bg-[rgba(255,255,255,0.03)] px-3 py-1.5 text-xs text-[#b0b0b0]'
+                    }
                   >
                     {tag}
                   </span>

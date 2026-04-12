@@ -1,9 +1,14 @@
+import { useLayoutEffect } from 'react';
 import { ArrowLeft } from 'lucide-react';
 import { useNavigate } from 'react-router';
 import { withBase } from '../utils/withBase';
 
 export function LazerBallsDemo() {
   const navigate = useNavigate();
+
+  useLayoutEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   return (
     <div className="min-h-screen bg-[#0a0a0a] text-white">

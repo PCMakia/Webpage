@@ -2,11 +2,12 @@ export type ProjectEntry = {
   id: string;
   title: string;
   description: string;
-  /** Longer copy shown on the project detail page (read-only text area). */
   detail: string;
-  /** Path under `public/`, e.g. `/videos/dungeon-diver.mp4`. Omit until a file is added. */
+  
   videoSrc?: string;
   tags: string[];
+  /** Highlights the card with a ribbon; pair with a `flagship` tag for the yellow/magenta chip. */
+  featured?: boolean;
   category: 'ai' | 'android' | 'game' | 'tools';
   link: string;
   demo?: string;
@@ -20,9 +21,11 @@ export const projects: ProjectEntry[] = [
       'Your own chatbot assistant, host locally on your own device. No longer you have to expose company private data to the AI companies. Built with Python, PyTorch, FastAPI, and Websocket.',
     detail:
       'Personal Agent Assistant is a locally hosted AI assistant focused on privacy, with Dockerized backend services, Ollama integration, and a desktop chat GUI. It also includes real-time WebSocket events, optional TTS endpoints, and memory/logging workflows for agent interactions.',
-    tags: ['Python', 'LLM', 'Pytorch', 'FastAPI', 'Websocket', 'Docker', "Desktop Application"],
+    tags: ['flagship', 'Python', 'LLM', 'Pytorch', 'FastAPI', 'Websocket', 'Docker', 'Desktop Application'],
+    featured: true,
     category: 'ai',
     link: 'https://github.com/PCMakia/Personal-Assistant',
+    videoSrc: '/videos/Agent-demo-v1.mp4',
   },
   {
     id: 'agent-mobile',
@@ -31,9 +34,11 @@ export const projects: ProjectEntry[] = [
       'An android app featuring a Live2D Cubism avatar that can be controlled by the connecting LLM agent. Built with Java and Cubism SDK.',
     detail:
       'Agent Mobile is an Android frontend built with Cubism SDK that brings a Live2D avatar to life and connects it to an LLM agent over WebSocket. The app supports avatar interaction and is designed to visualize model responses through animated character behavior.',
-    tags: ['Java', 'Android', 'Cubism for Java SDK'],
+    tags: ['flagship', 'Java', 'Android', 'Cubism for Java SDK'],
+    featured: true,
     category: 'android',
     link: 'https://github.com/PCMakia/Agent_mobile',
+    videoSrc: '/videos/Android-agent-demo-v1.mp4',
   },
   {
     id: 'dungeon-diver',

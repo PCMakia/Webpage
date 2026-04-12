@@ -1,13 +1,19 @@
-import React from 'react';
+import React, { useLayoutEffect } from 'react';
 import { ArrowLeft } from 'lucide-react';
 import { Link, useNavigate, useParams } from 'react-router';
 import { ComingSoon } from './components/ComingSoon';
 import { getProjectById } from './data/projects';
 import { withBase } from './utils/withBase';
+import { isFlagshipTag } from './utils/isFlagshipTag';
 
 export function ProjectDetailPage() {
   const { projectId } = useParams<{ projectId: string }>();
   const navigate = useNavigate();
+
+  useLayoutEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   const project = projectId ? getProjectById(projectId) : undefined;
 
   if (!project) {
@@ -73,7 +79,11 @@ export function ProjectDetailPage() {
             {project.tags.map((tag) => (
               <span
                 key={tag}
-                className="bg-[rgba(255,255,255,0.03)] border border-[rgba(255,255,255,0.1)] px-3 py-1.5 rounded-full text-sm text-[#b0b0b0]"
+                className={
+                  isFlagshipTag(tag)
+                    ? 'rounded-md border border-[#e6b400] bg-[#ffd447]/95 px-3 py-1.5 text-sm font-bold capitalize tracking-wide text-[#a3006b] shadow-sm'
+                    : 'rounded-full border border-[rgba(255,255,255,0.1)] bg-[rgba(255,255,255,0.03)] px-3 py-1.5 text-sm text-[#b0b0b0]'
+                }
               >
                 {tag}
               </span>
@@ -99,6 +109,7 @@ export function ProjectDetailPage() {
                   playsInline
                   loop
                   controls
+                  controlsList="nodownload"
                   preload="metadata"
                 >
                   <source src={withBase(project.videoSrc)} />

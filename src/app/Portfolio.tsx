@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useLayoutEffect } from "react";
 import { Navigation } from "./components/Navigation";
 import { Hero } from "./components/Hero";
 import { Expertise } from "./components/Expertise";
@@ -9,10 +9,24 @@ import { Footer } from "./components/Footer";
 import { ScrollToTop } from "./components/ScrollToTop";
 import { withBase } from "./utils/withBase";
 
+/** Tab-scoped scroll position when leaving the portfolio for project/demo pages (no cookies). */
+const PORTFOLIO_SCROLL_STORAGE_KEY = "wb:portfolio-scroll-y";
+
 export function Portfolio() {
   const [scrollY, setScrollY] = useState(0);
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
+
+  useLayoutEffect(() => {
+    const raw = sessionStorage.getItem(PORTFOLIO_SCROLL_STORAGE_KEY);
+    if (raw == null) return;
+    const y = Number(raw);
+    if (!Number.isFinite(y) || y < 0) return;
+    window.scrollTo(0, y);
+    sessionStorage.setItem(PORTFOLIO_SCROLL_STORAGE_KEY, String(window.scrollY));
+    setScrollY(window.scrollY);
+    setIsScrolled(window.scrollY > 300);
+  }, []);
 
   useEffect(() => {
     // Check screen width on mount and resize
@@ -25,6 +39,7 @@ export function Portfolio() {
 
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
+      sessionStorage.setItem(PORTFOLIO_SCROLL_STORAGE_KEY, String(currentScrollY));
       setScrollY(currentScrollY);
       // Start transition after scrolling 300px
       setIsScrolled(currentScrollY > 300);
@@ -33,7 +48,9 @@ export function Portfolio() {
     window.addEventListener("scroll", handleScroll, {
       passive: true,
     });
-    
+
+    handleScroll();
+
     return () => {
       window.removeEventListener("scroll", handleScroll);
       window.removeEventListener("resize", checkScreenSize);
