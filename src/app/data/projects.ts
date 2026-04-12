@@ -4,9 +4,10 @@ export type ProjectEntry = {
   description: string;
   detail: string;
   
+  /** Self-hosted path under `public/` (e.g. `/videos/x.mp4`) or a YouTube watch / `youtu.be` URL. */
   videoSrc?: string;
   tags: string[];
-  /** Highlights the card with a ribbon; pair with a `flagship` tag for the yellow/magenta chip. */
+  
   featured?: boolean;
   category: 'ai' | 'android' | 'game' | 'tools';
   link: string;
@@ -25,7 +26,7 @@ export const projects: ProjectEntry[] = [
     featured: true,
     category: 'ai',
     link: 'https://github.com/PCMakia/Personal-Assistant',
-    videoSrc: '/videos/Agent-demo-v1.mp4',
+    videoSrc: 'https://youtu.be/T7Jd2jelvgY',
   },
   {
     id: 'agent-mobile',
@@ -38,7 +39,7 @@ export const projects: ProjectEntry[] = [
     featured: true,
     category: 'android',
     link: 'https://github.com/PCMakia/Agent_mobile',
-    videoSrc: '/videos/Android-agent-demo-v1.mp4',
+    videoSrc: 'https://youtu.be/7c1c6harcHg',
   },
   {
     id: 'dungeon-diver',

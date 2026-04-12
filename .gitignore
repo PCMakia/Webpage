@@ -22,4 +22,6 @@ guidelines/
 Thumbs.db
 .vscode/
 .idea/
-./videos
+# Large demo assets — host externally or keep locally; do not commit MP4s to GitHub
+/videos/
+/public/videos/*.mp4

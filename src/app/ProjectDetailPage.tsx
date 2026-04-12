@@ -5,6 +5,7 @@ import { ComingSoon } from './components/ComingSoon';
 import { getProjectById } from './data/projects';
 import { withBase } from './utils/withBase';
 import { isFlagshipTag } from './utils/isFlagshipTag';
+import { getYoutubeEmbedSrc } from './utils/youtubeEmbed';
 
 export function ProjectDetailPage() {
   const { projectId } = useParams<{ projectId: string }>();
@@ -32,8 +33,9 @@ export function ProjectDetailPage() {
     );
   }
 
-  // Dev note: add an MP4/WebM under public/videos/ and set `videoSrc` for
-  // the project in src/app/data/projects.ts, e.g. `/videos/${project.id}.mp4`.
+  // Dev note: set `videoSrc` in projects.ts to a YouTube URL or `/videos/...` under public/.
+  const youtubeEmbed = project.videoSrc ? getYoutubeEmbedSrc(project.videoSrc) : null;
+
   return (
     <div className="min-h-screen bg-[#0a0a0a] text-white">
       <header className="bg-[rgba(10,10,10,0.95)] backdrop-blur-[10px] border-b border-[rgba(255,255,255,0.1)] px-8 py-4">
@@ -101,9 +103,18 @@ export function ProjectDetailPage() {
 
           <div className="bg-[#111111] border border-[rgba(255,255,255,0.1)] rounded-xl overflow-hidden">
             <div className="aspect-video bg-gradient-to-br from-[#1a0a1a] to-[#0a0a0a] relative flex items-center justify-center">
-              {project.videoSrc ? (
+              {youtubeEmbed ? (
+                <iframe
+                  src={youtubeEmbed}
+                  title={`${project.title} — demo video`}
+                  className="absolute inset-0 h-full w-full border-0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  allowFullScreen
+                  referrerPolicy="strict-origin-when-cross-origin"
+                />
+              ) : project.videoSrc ? (
                 <video
-                  className="w-full h-full object-contain"
+                  className="h-full w-full object-contain"
                   autoPlay
                   muted
                   playsInline
