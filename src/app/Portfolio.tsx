@@ -9,7 +9,7 @@ import { Footer } from "./components/Footer";
 import { ScrollToTop } from "./components/ScrollToTop";
 import { withBase } from "./utils/withBase";
 
-/** Tab-scoped scroll position when leaving the portfolio for project/demo pages (no cookies). */
+
 const PORTFOLIO_SCROLL_STORAGE_KEY = "wb:portfolio-scroll-y";
 
 export function Portfolio() {
